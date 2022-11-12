@@ -6,7 +6,7 @@ metadata:
   labels:
     app: employees
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: employees
@@ -17,33 +17,21 @@ spec:
     spec:
      containers:
       - name: employees-webapp
-        image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass02-app:v2.0
+        image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass03-app:v3.0
         env:
+       - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: password
         - name: DBHOST
-          valueFrom:
-             secretKeyRef:
-               name: app-secrets
-               key: DBHOST
+           value: "mysqldb.lab3"
         - name: DBPORT
-          valueFrom:
-             secretKeyRef:
-               name: app-secrets
-               key: DBPORT  
-        - name: DBPWD
-          valueFrom:
-             secretKeyRef:
-               name: app-secrets
-               key: DBPWD
+           value: "3306"
         - name: DATABASE
-          valueFrom:
-             secretKeyRef:
-               name: app-secrets
-               key: DATABASE
-        - name: DBUSER
-          valueFrom:
-             secretKeyRef:
-               name: app-secrets
-               key: DBUSER
+           value: "employees"
+        - name: APP_COLOR
+           value: "darkblue"
         ports:
         - name: web
           containerPort: 8080
