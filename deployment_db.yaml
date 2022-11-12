@@ -15,6 +15,10 @@ spec:
       labels:
        app: mysql
     spec:
+      volumes:
+       - name: mysql-data
+         persistentVolumeClaim:
+          claimName: mysql-pvc
       containers:
       - name: mysql
         image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass02-db:v2.0
@@ -24,7 +28,11 @@ spec:
             secretKeyRef:
               name: mysql-secret
               key: password
+        volumeMounts:
+        - name: mysql-data
+          mountPath: /data/db
         ports:
         - name: mysql
           containerPort: 3306
           protocol: TCP
+       
