@@ -7,3 +7,6 @@ provisioner: kubernetes.io/aws-ebs
 parameters:
   type: gp2
   fsType: ext4
+mountOptions:
+  - debug
+volumeBindingMode: WaitForFirstConsumer
