@@ -20,7 +20,7 @@ spec:
         image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass03-app:v3.0
         env:
           - name: DBHOST
-            value: 10.100.51.61
+            value: "mysqldb.lab3"
           - name: DBPORT
             value: "3306"
           - name: DBUSER
