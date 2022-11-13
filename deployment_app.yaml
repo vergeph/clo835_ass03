@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: employees
+  name: webapp
   namespace: app
   labels:
     app: employees
@@ -16,22 +16,21 @@ spec:
        app: employees
     spec:
      containers:
-      - name: employees-webapp
+      - name: webapp
         image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass03-app:v3.0
         env:
-       - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: password
-        - name: DBHOST
-           value: "mysqldb.lab3"
-        - name: DBPORT
-           value: "3306"
-        - name: DATABASE
-           value: "employees"
-        - name: APP_COLOR
-           value: "darkblue"
+          - name: DBHOST
+            value: 10.100.51.61
+          - name: DBPORT
+            value: "3306"
+          - name: DBUSER
+            value: "root"
+          - name: DBPWD
+            value: "pass1234"
+          - name: DATABASE
+            value: "employees"
+          - name: APP_COLOR
+            value: "darkblue"
         ports:
         - name: web
           containerPort: 8080

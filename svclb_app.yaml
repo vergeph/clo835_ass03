@@ -8,14 +8,14 @@ metadata:
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapp
+  name: webapplb
   namespace: app
   labels:
     app: employees
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: external
-    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
-    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+ # annotations:
+    #service.beta.kubernetes.io/aws-load-balancer-type: external
+    #service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    #service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
 spec:
   type: LoadBalancer
   ports:
