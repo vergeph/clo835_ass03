@@ -18,7 +18,7 @@ spec:
       volumes:
        - name: mysql-data
          persistentVolumeClaim:
-           claimName: mysql-pvc1
+           claimName: mysql-pvc
       containers:
       - name: mysql
         image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass03-db:v3.0
