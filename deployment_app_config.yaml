@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+  namespace: app
+  labels:
+    app: employees
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: employees
+  template:
+    metadata:
+      labels:
+       app: employees
+    spec:
+     containers:
+      - name: webapp
+        image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass03-app:v3.0
+        env:
+          - name: DBHOST
+            value: "mysqldb.lab3"
+          - name: DBPORT
+            value: "3306"
+          - name: DBUSER
+            value: "root"
+          - name: DBPWD
+            value: "pass1234"
+          - name: DATABASE
+            value: "employees"
+          - name: APP_COLOR
+            valueFrom: 
+              configMapKeyRef:
+                name: config-color
+                key: color01
+        ports:
+        - name: web
+          containerPort: 8080
+          protocol: TCP

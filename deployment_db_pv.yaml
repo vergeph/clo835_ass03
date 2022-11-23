@@ -18,7 +18,7 @@ spec:
       volumes:
        - name: mysql-data
          persistentVolumeClaim:
-           claimName: mysql-pvc
+           claimName: mysql-pvc-local
       containers:
       - name: mysql
         image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass03-db:v3.0
@@ -31,9 +31,9 @@ spec:
         volumeMounts:
         - name: mysql-data
           mountPath: /var/lib/mysql
-          subPath: mysql
+          #subPath: mysql
         ports:
         - name: mysql
           containerPort: 3306
           protocol: TCP
- 
+       

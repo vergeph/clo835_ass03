@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-color
+  namespace: app
+data:
+  color01: "lime"
+  color02: "blue"
