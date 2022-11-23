@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mysql-pvc-local
   namespace: lab3
-  labels:
+  labels: 
     app: mysql
 spec:
   storageClassName: localstorage
