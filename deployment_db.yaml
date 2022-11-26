@@ -21,7 +21,7 @@ spec:
            claimName: mysql-pvc
       containers:
       - name: mysql
-        image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass03-db:v3.0
+        image: 563571752566.dkr.ecr.us-east-1.amazonaws.com/mysql:v0.1
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
